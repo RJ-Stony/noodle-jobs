@@ -1,0 +1,52 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Outlet,
+} from "react-router-dom";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { AnimatePresence } from "framer-motion";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import CategoryPage from "./pages/CategoryPage";
+import QuestionDetail from "./pages/QuestionDetail";
+import SubmitQuestion from "./pages/SubmitQuestion";
+import EditQuestion from "./pages/EditQuestion";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Outlet />
+            </Layout>
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path="category/:name" element={<CategoryPage />} />
+          <Route path="question/:id" element={<QuestionDetail />} />
+          <Route path="question/edit/:id" element={<EditQuestion />} />
+          <Route path="submit" element={<SubmitQuestion />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Router basename="/noodle-jobs">
+        <AnimatedRoutes />
+      </Router>
+    </ThemeProvider>
+  );
+}
+
+export default App;

@@ -1,0 +1,54 @@
+{
+  "categories": {
+    "os": {
+      "id": "os",
+      "name": "운영체제",
+      "description": "프로세스, 스레드, 메모리 관리 등 운영체제 핵심 개념",
+      "icon": "ComputerDesktopIcon"
+    },
+    "network": {
+      "id": "network",
+      "name": "네트워크",
+      "description": "TCP/IP, HTTP, 소켓 프로그래밍 등 네트워크 기초",
+      "icon": "GlobeAltIcon"
+    },
+    "database": {
+      "id": "database",
+      "name": "데이터베이스",
+      "description": "SQL, 인덱싱, 트랜잭션 등 DB 핵심 개념",
+      "icon": "CircleStackIcon"
+    },
+    "algorithm": {
+      "id": "algorithm",
+      "name": "자료구조와 알고리즘",
+      "description": "기본 자료구조와 알고리즘 문제 해결 전략",
+      "icon": "CodeBracketIcon"
+    },
+    "architecture": {
+      "id": "architecture",
+      "name": "시스템 아키텍처",
+      "description": "시스템 설계, 디자인 패턴, MSA 등",
+      "icon": "CubeIcon"
+    }
+  },
+  "questions": {
+    "q1": {
+      "id": "q1",
+      "title": "프로세스와 스레드의 차이점은 무엇인가요?",
+      "categoryId": "os",
+      "content": "프로세스와 스레드의 주요 차이점과 각각의 특징에 대해 설명해주세요.",
+      "answer": "프로세스는 실행 중인 프로그램의 인스턴스로, 독립된 메모리 공간을 가집니다. 반면 스레드는 프로세스 내의 실행 단위로, 같은 프로세스 내의 스레드들은 메모리 공간을 공유합니다.\n\n주요 차이점:\n1. 메모리 공간: 프로세스는 독립적, 스레드는 공유\n2. 리소스: 프로세스는 운영체제로부터 직접 할당, 스레드는 프로세스의 리소스 공유\n3. 통신: 프로세스간 통신(IPC)은 복잡, 스레드간 통신은 간단\n4. 컨텍스트 스위칭: 프로세스간 전환이 스레드간 전환보다 비용이 큼",
+      "createdAt": "2024-04-10T12:00:00Z",
+      "updatedAt": "2024-04-10T12:00:00Z"
+    },
+    "q2": {
+      "id": "q2",
+      "title": "TCP와 UDP의 차이점은 무엇인가요?",
+      "categoryId": "network",
+      "content": "전송 계층의 대표적인 프로토콜인 TCP와 UDP의 차이점에 대해 설명해주세요.",
+      "answer": "TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)는 전송 계층의 프로토콜로, 다음과 같은 차이가 있습니다:\n\n1. 연결 방식\n- TCP: 연결 지향적 (3-way handshaking)\n- UDP: 비연결형\n\n2. 신뢰성\n- TCP: 신뢰성 보장 (데이터 순서 보장, 손실 패킷 재전송)\n- UDP: 신뢰성 없음 (데이터 손실 가능)\n\n3. 속도\n- TCP: 상대적으로 느림\n- UDP: 상대적으로 빠름\n\n4. 사용 예\n- TCP: 웹 브라우징(HTTP), 이메일(SMTP), 파일 전송(FTP)\n- UDP: 실시간 스트리밍, 온라인 게임, DNS",
+      "createdAt": "2024-04-10T12:00:00Z",
+      "updatedAt": "2024-04-10T12:00:00Z"
+    }
+  }
+}

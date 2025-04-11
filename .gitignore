@@ -1,0 +1,53 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Vite build output
+dist/
+dist-ssr/
+
+# Local environment files
+.env
+.env.*.local
+*.local
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+*.stackdump
+
+# IDEs and editors
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Parcel cache / Vite cache / ESLint cache
+.cache/
+.vite/
+.eslintcache
+
+# Optional: TypeScript build output
+*.tsbuildinfo
+
+# Optional: coverage output
+coverage/
+
+# GitHub Pages artifacts (only if you're deploying with gh-pages)
+# If you're pushing dist to gh-pages branch, it's fine to keep it ignored here
+gh-pages/

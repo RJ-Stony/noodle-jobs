@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+    @apply bg-beige-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-all duration-200 border border-gray-100;
+  }
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply bg-[#B4A69F] text-white hover:bg-[#9E8E88];
+  }
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-beige-500 bg-black text-white;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.home-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.category-card {
+  @apply flex flex-col h-full;
+}
+
+.category-icon {
+  @apply h-8 w-8 text-[#B4A69F] mb-4;
+}
+
+.category-title {
+  @apply text-xl font-semibold text-gray-900 mb-2;
+}
+
+.category-description {
+  @apply text-gray-600 text-sm;
+}
+
+.page-title {
+  @apply text-4xl font-bold text-gray-900 mb-4 text-center;
+}
+
+.page-subtitle {
+  @apply text-xl text-gray-600 text-center mb-12;
+}
+
+.question-form {
+  @apply max-w-2xl mx-auto space-y-6 bg-black p-8 rounded-lg;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-white mb-1;
+}
+
+.back-link {
+  @apply text-[#B4A69F] hover:text-[#9E8E88] inline-flex items-center mb-6;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #bfa094;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #bfa094;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  @apply rounded-md border border-transparent px-4 py-2 text-base font-medium transition-all;
+  background-color: #bfa094; /* 기본 베이지 */
+  color: white;
+}
+
+button:hover {
+  background-color: #977669; /* hover 베이지 톤 */
+  border-color: #bfa094; /* hover 테두리도 동일하게 */
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+  border-color: #bfa094; /* 강조 선명하게 */
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #bfa094;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
