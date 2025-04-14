@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import questionsData from "../data/questions.json";
 import { Question } from "../types";
 import { useState, useEffect } from "react";
+import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 
 export default function CategoryPage() {
   const { name } = useParams<{ name: string }>();
@@ -63,7 +64,7 @@ export default function CategoryPage() {
                   className="flex flex-col gap-3 p-5 group"
                 >
                   <div className="flex items-start gap-2">
-                    <div className="text-xl">💭</div>
+                    <ChatBubbleLeftRightIcon className="w-5 h-5 text-gray-400 group-hover:text-[#B4A69F] mt-1" />
                     <h2 className="text-[17px] font-semibold leading-snug tracking-tight text-gray-900 group-hover:text-[#B4A69F]">
                       {question.title}
                     </h2>

@@ -3,31 +3,31 @@
     "os": {
       "id": "OS",
       "name": "운영체제",
-      "description": "프로세스, 스레드, 메모리 등 완벽하게 씹어먹자 🔥",
+      "description": "프로세스, 스레드, 메모리 등 완벽하게 씹어먹자",
       "icon": "ComputerDesktopIcon"
     },
     "network": {
       "id": "Network",
       "name": "네트워크",
-      "description": "네트워크는 결국 사랑일까...? ❤️‍🔥",
+      "description": "네트워크는 결국 사랑일까...?",
       "icon": "GlobeAltIcon"
     },
     "database": {
       "id": "DB",
       "name": "데이터베이스",
-      "description": "SQL로 면접관 마음도 조인해버리기 🥸",
+      "description": "SQL로 면접관 마음도 조인해버리기",
       "icon": "CircleStackIcon"
     },
     "algorithm": {
       "id": "Algorithm",
       "name": "자료구조와 알고리즘",
-      "description": "기본 자료구조와 알고리즘 문제 해결 전략들 ",
+      "description": "기본 자료구조와 알고리즘 문제 해결 전략들",
       "icon": "CodeBracketIcon"
     },
     "architecture": {
       "id": "Architecture",
       "name": "시스템 아키텍처",
-      "description": "MSA? 디자인 패턴? 이제는 면접에서 말할 차례 ⚙️",
+      "description": "MSA? 디자인 패턴? 이제는 면접에서 말할 차례",
       "icon": "CubeIcon"
     }
   },

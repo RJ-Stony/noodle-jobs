@@ -11,7 +11,7 @@
 
 @layer components {
   .card {
-    @apply bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-all duration-200 border border-gray-100;
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-200 border border-gray-100;
   }
   .btn {
     @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;

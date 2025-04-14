@@ -6,6 +6,7 @@ import {
   CircleStackIcon,
   CodeBracketIcon,
   CubeIcon,
+  FireIcon,
 } from "@heroicons/react/24/outline";
 import questionsData from "../data/questions.json";
 import { Category } from "../types";
@@ -42,12 +43,13 @@ export default function Home() {
           면Job's
         </motion.h1>
         <motion.p
-          className="text-lg text-gray-600 dark:text-gray-300"
+          className="text-lg text-gray-600 dark:text-gray-300 flex justify-center items-center gap-1"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.3 }}
         >
-          면접, 라면보다 쉽게 끓여드릴게요 🍜
+          기술 면접, 라면보다 쉽게 끓여드릴게요
+          <FireIcon className="w-5 h-5 text-orange-500" />
         </motion.p>
       </div>
 
