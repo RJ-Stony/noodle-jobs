@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-
-# noodle-jobs
-
-# IT 기술 면접 준비 플랫폼
-
 # 🍜 Noodle Jobs
 
 개발자 면접 준비를 위한 CS 질문/답변 학습 플랫폼입니다.
@@ -96,9 +90,3 @@ noodle-jobs/
 ## 라이선스
 
 MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
-
-## 문의
-
-- GitHub Issues를 통해 버그를 제보하거나 새로운 기능을 제안해주세요.
-- 이메일: your-email@example.com
-  > > > > > > > 6e504f9 (deploy: 초기 설정 및 배포 준비)
