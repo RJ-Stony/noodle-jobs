@@ -36,7 +36,7 @@ export default function CategoryPage() {
 
   return (
     <motion.div
-      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900"
+      className="py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
