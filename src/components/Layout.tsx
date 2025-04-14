@@ -17,18 +17,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               Noodle Jobs
             </Link>
             <div className="flex items-center space-x-4">
-              <Link
-                to="/submit"
-                className="group relative px-4 py-2 rounded-md border border-transparent
-    hover:border-[#B4A69F] dark:hover:border-[#D6C8C2]
-    bg-gradient-to-r from-[#B4A69F] to-[#9E8E88] dark:bg-[#4a3f3a] 
-    text-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <span className="absolute inset-0 bg-white dark:bg-gray-800 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-                <span className="relative group-hover:text-[#B4A69F] dark:group-hover:text-[#D6C8C2] transition-colors duration-300">
-                  질문 등록하기
-                </span>
-              </Link>
               <button
                 onClick={toggleTheme}
                 className="group relative p-2 rounded-md border border-transparent 

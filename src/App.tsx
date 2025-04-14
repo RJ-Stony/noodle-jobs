@@ -11,8 +11,6 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import CategoryPage from "./pages/CategoryPage";
 import QuestionDetail from "./pages/QuestionDetail";
-import SubmitQuestion from "./pages/SubmitQuestion";
-import EditQuestion from "./pages/EditQuestion";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -31,8 +29,6 @@ function AnimatedRoutes() {
           <Route index element={<Home />} />
           <Route path="category/:name" element={<CategoryPage />} />
           <Route path="question/:id" element={<QuestionDetail />} />
-          <Route path="question/edit/:id" element={<EditQuestion />} />
-          <Route path="submit" element={<SubmitQuestion />} />
         </Route>
       </Routes>
     </AnimatePresence>

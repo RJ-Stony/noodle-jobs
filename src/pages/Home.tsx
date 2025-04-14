@@ -47,7 +47,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.3 }}
         >
-          IT 기술 면접 준비 플랫폼 🔥
+          면접, 라면보다 쉽게 끓여드릴게요 🍜
         </motion.p>
       </div>
 
@@ -67,7 +67,9 @@ export default function Home() {
               >
                 <Icon className="category-icon" />
                 <h2 className="category-title">{category.name}</h2>
-                <p className="category-description">{category.description}</p>
+                <p className="category-description line-clamp-1">
+                  {category.description}
+                </p>
               </Link>
             </motion.div>
           );

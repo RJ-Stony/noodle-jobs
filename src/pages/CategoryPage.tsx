@@ -75,58 +75,30 @@ export default function CategoryPage() {
             {categoryNames[name as string] || name}
           </h1>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-            지금까지 {questions.length}개의 질문들이 쌓여있었어요
+            지금까지 {questions.length}개의 질문들이 쌓여있어요
           </p>
         </div>
 
         {questions.length > 0 ? (
           <div className="w-full max-w-3xl mx-auto space-y-6">
-            <div className="text-center mb-6">
-              <Link
-                to="/submit"
-                className="mt-1 inline-block group relative px-5 py-2 rounded-md border border-transparent
-              hover:border-[#B4A69F] dark:hover:border-[#D6C8C2]
-              bg-gradient-to-r from-[#B4A69F] to-[#9E8E88] dark:bg-[#4a3f3a]
-              text-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300
-              focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:outline-none"
-              >
-                <span className="absolute inset-0 bg-white dark:bg-gray-800 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
-                <span className="relative group-hover:text-[#B4A69F] dark:group-hover:text-[#D6C8C2] transition-colors duration-300">
-                  질문 등록하기
-                </span>
-              </Link>
-            </div>
+            <div className="text-center mb-6"></div>
             {questions.map((question) => (
               <motion.div
                 key={question.id}
                 className="w-full max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 min-h-32 break-words"
               >
                 <div className="p-6">
-                  <div className="flex justify-between items-start">
+                  <div className="flex justify-between items-start gap-4">
                     <Link
                       to={`/question/${question.id}`}
-                      className="flex-1 group"
+                      className="flex-1 group pr-2"
                     >
-                      <h2 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-[#B4A69F] dark:group-hover:text-[#D6C8C2] transition-colors">
+                      <h2 className="text-base font-medium text-gray-900 dark:text-white group-hover:text-[#B4A69F] dark:group-hover:text-[#D6C8C2] transition-colors line-clamp-2 leading-snug mb-1">
                         {question.title}
                       </h2>
                     </Link>
-                    <div className="flex space-x-2 ml-4">
-                      <Link
-                        to={`/question/edit/${question.id}`}
-                        className="p-2 rounded-md bg-blue-500 hover:bg-white hover:text-blue-500 dark:hover:bg-gray-800 dark:hover:text-blue-400 text-white dark:bg-blue-400 border-2 border-transparent hover:border-blue-500 dark:hover:border-blue-400 transition-all"
-                      >
-                        <PencilIcon className="h-5 w-5" />
-                      </Link>
-                      <button
-                        onClick={() => handleDeleteClick(question.id)}
-                        className="p-2 rounded-md bg-red-500 hover:bg-white hover:text-red-500 dark:hover:bg-gray-800 dark:hover:text-red-400 text-white dark:bg-red-400 border-2 border-transparent hover:border-red-500 dark:hover:border-red-400 transition-all"
-                      >
-                        <TrashIcon className="h-5 w-5" />
-                      </button>
-                    </div>
                   </div>
-                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-5">
                     {new Date(question.createdAt).toLocaleDateString("ko-KR", {
                       year: "numeric",
                       month: "long",
@@ -138,42 +110,17 @@ export default function CategoryPage() {
             ))}
           </div>
         ) : (
-          <div className="w-full max-w-2xl mx-auto flex justify-center">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md px-6 py-12 text-center max-w-md w-full">
-              <p className="text-gray-500 dark:text-gray-400 mb-6">
-                아직 등록된 질문이 없어요 !
-              </p>
-              <Link
-                to="/submit"
-                className="group relative inline-block px-5 py-2 rounded-md border border-transparent
-                  hover:border-[#B4A69F] dark:hover:border-[#D6C8C2]
-                  bg-gradient-to-r from-[#B4A69F] to-[#9E8E88] dark:bg-[#4a3f3a]
-                  text-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300
-                  focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:outline-none"
-              >
-                <span className="absolute inset-0 bg-white dark:bg-gray-800 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
-                <span className="relative group-hover:text-[#B4A69F] dark:group-hover:text-[#D6C8C2] transition-colors duration-300">
-                  첫 질문 등록하기
-                </span>
-              </Link>
-            </div>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md px-6 py-16 text-center max-w-md w-full">
+            <p className="text-3xl mb-3">📭</p>
+            <p className="text-base font-medium text-gray-800 dark:text-white mb-2">
+              여기엔 아직 등록된 질문이 없어요
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+              곧 질문이 추가될 예정이에요!
+            </p>
           </div>
         )}
       </div>
-
-      <Modal
-        isOpen={deleteModalOpen}
-        onClose={() => setDeleteModalOpen(false)}
-        onConfirm={handleDelete}
-        title="질문 삭제"
-        confirmText="삭제"
-        cancelText="취소"
-      >
-        <p>정말로 이 질문을 삭제하시겠습니까?</p>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-          이 작업은 되돌릴 수 없습니다.
-        </p>
-      </Modal>
     </motion.div>
   );
 }

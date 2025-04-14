@@ -102,22 +102,7 @@ export default function QuestionDetail() {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
             {question.title}
           </h1>
-          <div className="flex space-x-3">
-            <Link
-              to={`/question/edit/${question.id}`}
-              className="p-2 rounded-md bg-blue-500 hover:bg-white hover:text-blue-500 dark:hover:bg-gray-800 dark:hover:text-blue-400 text-white dark:bg-blue-400 border-2 border-transparent hover:border-blue-500 dark:hover:border-blue-400 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-offset-2 ring-offset-white dark:ring-offset-gray-800"
-            >
-              <PencilIcon className="h-5 w-5" />
-            </Link>
-            <button
-              onClick={() => setDeleteModalOpen(true)}
-              className="p-2 rounded-md bg-red-500 hover:bg-white hover:text-red-500 dark:hover:bg-gray-800 dark:hover:text-red-400 text-white dark:bg-red-400 border-2 border-transparent hover:border-red-500 dark:hover:border-red-400 transition-all focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 focus:ring-offset-2 ring-offset-white dark:ring-offset-gray-800"
-            >
-              <TrashIcon className="h-5 w-5" />
-            </button>
-          </div>
         </div>
-
         <div className="prose dark:prose-invert max-w-none">
           <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
             {question.answer}
