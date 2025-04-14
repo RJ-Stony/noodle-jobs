@@ -99,7 +99,7 @@ export default function CategoryPage() {
             {questions.map((question) => (
               <motion.div
                 key={question.id}
-                className="w-[640px] mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 min-h-32 break-words"
+                className="w-full max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 min-h-32 break-words"
               >
                 <div className="p-6">
                   <div className="flex justify-between items-start">
@@ -138,7 +138,7 @@ export default function CategoryPage() {
             ))}
           </div>
         ) : (
-          <div className="w-[640px] mx-auto flex justify-center">
+          <div className="w-full max-w-2xl mx-auto flex justify-center">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md px-6 py-12 text-center max-w-md w-full">
               <p className="text-gray-500 dark:text-gray-400 mb-6">
                 아직 등록된 질문이 없어요 !

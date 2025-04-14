@@ -93,7 +93,7 @@ export default function QuestionDetail() {
       </div>
 
       <motion.div
-        className="w-[840px] mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8"
+        className="w-full max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
