@@ -50,19 +50,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </p>
             <div className="flex space-x-6">
               <Link
-                to="/about"
+                to="/"
                 className="text-sm text-gray-500 hover:text-[#B4A69F] dark:text-gray-400 dark:hover:text-[#D6C8C2] transition-colors"
               >
                 About
               </Link>
               <Link
-                to="/privacy"
+                to="/"
                 className="text-sm text-gray-500 hover:text-[#B4A69F] dark:text-gray-400 dark:hover:text-[#D6C8C2] transition-colors"
               >
                 Privacy
               </Link>
               <Link
-                to="/terms"
+                to="/"
                 className="text-sm text-gray-500 hover:text-[#B4A69F] dark:text-gray-400 dark:hover:text-[#D6C8C2] transition-colors"
               >
                 Terms
