@@ -1,31 +1,62 @@
-# 🍜 Noodle Jobs
+# 🍜 Noodle Job's
 
-개발자 면접 준비를 위한 CS 질문/답변 학습 플랫폼입니다.
+**기술 면접 준비가 라면 끓이는 것보다 쉬워지는 순간!**  
+개발자를 위한 기술 면접 질문 학습 웹앱, **Noodle Jobs**입니다.  
+운영체제, 네트워크, 데이터베이스 등 핵심 CS 주제를 카테고리별로 정리하고, 체계적으로 학습할 수 있습니다.
 
-## 주요 기능
+---
 
-- 운영체제, 네트워크, 데이터베이스 등 주요 CS 주제별 질문 모음
-- 카테고리별 질문 브라우징
-- 질문 상세 보기 및 답변 학습
-- 새로운 질문 등록 기능
-- 반응형 디자인으로 모바일 지원
+## ✅ 주요 기능
 
-## 기술 스택
+- 📚 **CS 지식 기반 카테고리 구성**: 운영체제, 네트워크, DB, 아키텍처, 알고리즘 등 분야별 정리
+- 🔍 **질문 리스트 탐색**: 카테고리별 질문들을 모아보기
+- 🧠 **질문 상세 보기 및 답변 학습**: ReactMarkdown으로 마크다운 형식 답변 지원
+- 📝 **사용자 질문 등록 기능**: 로컬스토리지 기반 저장 (향후 서버 연동 고려 가능)
+- 📱 **모바일 최적화**: 반응형 Tailwind UI 설계
+- 🌗 **다크 모드 지원**: ThemeContext 기반 테마 전환 가능
 
-- React + Vite
-- TypeScript
-- Tailwind CSS
-- React Router
-- Heroicons
+---
 
-## 시작하기
+## 🛠️ 기술 스택
 
-### 필수 조건
+- **Frontend**: React + Vite
+- **Language**: TypeScript
+- **Style**: Tailwind CSS
+- **Routing**: React Router
+- **Icons**: Heroicons
+- **State**: Context API
 
-- Node.js 18.0.0 이상
-- npm 9.0.0 이상
+---
 
-### 설치
+## 📁 디렉토리 구조
+
+```
+noodle-jobs/
+├── public/                  # 정적 파일 (실제 질문 DB)
+├── src/
+│   ├── assets/              # 이미지, 아이콘 등
+│   ├── components/          # Modal, Layout 등 재사용 UI
+│   ├── contexts/            # ThemeContext, 테마 전환 관련
+│   ├── data/                # questions.json (질문 카테고리)
+│   ├── pages/               # Home, CategoryPage, QuestionDetail
+│   ├── types/               # 공통 타입 정의 (Question 등)
+│   ├── utils/               # 질문 CSV 로딩 유틸 함수
+│   └── App.tsx              # 메인 라우팅 설정
+├── tailwind.config.js       # Tailwind 설정
+├── vite.config.ts           # Vite 설정
+└── README.md
+```
+
+---
+
+## 🚀 시작하기
+
+### ⚙️ 설치 전 준비
+
+- Node.js 18+
+- npm 9+
+
+### 🔧 설치 및 실행
 
 ```bash
 # 저장소 클론
@@ -39,19 +70,20 @@ npm install
 npm run dev
 ```
 
-### 빌드
+### 🔨 프로덕션 빌드
 
 ```bash
-# 프로덕션용 빌드
-npm run build
-
-# 빌드 결과물 미리보기
-npm run preview
+npm run build      # 빌드
+npm run preview    # 빌드된 결과 미리보기
 ```
 
-### GitHub Pages 배포
+---
 
-1. `package.json`의 `homepage` 필드를 자신의 GitHub Pages URL로 수정:
+## 🌐 GitHub Pages 배포
+
+`gh-pages` 브랜치를 활용하여 정적 배포가 가능합니다.
+
+1. `package.json` 수정:
 
 ```json
 {
@@ -65,28 +97,17 @@ npm run preview
 npm run deploy
 ```
 
-## 프로젝트 구조
+---
 
-```
-noodle-jobs/
-├── src/
-│   ├── components/     # 재사용 가능한 컴포넌트
-│   ├── pages/         # 페이지 컴포넌트
-│   ├── data/          # 질문/답변 데이터
-│   ├── types/         # TypeScript 타입 정의
-│   └── App.tsx        # 메인 앱 컴포넌트
-├── public/            # 정적 파일
-└── index.html         # 진입점
-```
+## 💡 향후 개선 아이디어
 
-## 기여하기
+- [ ] 질문 검색 기능 추가
+- [ ] 서버 연동으로 질문 공유 기능
+- [ ] GitHub OAuth 등 로그인 기능
+- [ ] 질문 북마크 및 오답노트 기능
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+---
 
-## 라이선스
+## 📜 라이선스
 
-MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하시면 되겠습니다.
+MIT
