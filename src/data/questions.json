@@ -66,12 +66,6 @@
       "description": "버그를 부수는 쾌감, 디버깅은 우리의 문화입니다",
       "icon": "BeakerIcon"
     },
-    "systemdesign": {
-      "id": "System Design",
-      "name": "시스템 디자인",
-      "description": "트래픽 폭탄에도 끄떡없는, 좀 치밀한 설계 한 번 해보자",
-      "icon": "RectangleStackIcon"
-    },
     "mobile": {
       "id": "Mobile",
       "name": "모바일",
