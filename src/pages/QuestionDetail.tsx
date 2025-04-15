@@ -56,19 +56,19 @@ export default function QuestionDetail() {
 
   return (
     <motion.div
-      className="py-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+      className="py-4 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mb-8">
+      <div className="mb-2">
         <Link
           to={`/category/${question.categoryId}`}
           className="inline-flex items-center text-[#B4A69F] hover:text-[#9E8E88] dark:text-[#D6C8C2] dark:hover:text-[#E8DCD6] transition-colors mb-4"
         >
           <ArrowLeftIcon className="h-5 w-5 mr-2" />
-          카테고리
+          Category
         </Link>
       </div>
 

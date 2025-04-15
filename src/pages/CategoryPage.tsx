@@ -43,7 +43,7 @@ export default function CategoryPage() {
       part.toLowerCase() === keyword.toLowerCase() ? (
         <mark
           key={index}
-          className="bg-[#F2E8E5] dark:bg-[#784c35]/60 text-inherit px-[2px] py-[0.5px] rounded-sm"
+          className="bg-[#e8d3cc] dark:bg-[#6a361a]/60 text-inherit px-[2px] py-[0.5px] rounded-sm"
         >
           {part}
         </mark>
@@ -60,18 +60,19 @@ export default function CategoryPage() {
 
   return (
     <motion.div
-      className="py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900"
+      className="py-3 px-3 sm:px-3 lg:px-4 dark:bg-gray-900"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mb-4">
+      <div>
         <Link
           to="/"
           className="inline-flex items-center text-[#B4A69F] hover:text-[#9E8E88] dark:text-[#D6C8C2] dark:hover:text-[#E8DCD6] transition-colors"
         >
-          <ArrowLeftIcon className="h-5 w-5" />
+          <ArrowLeftIcon className="h-5 w-5 mr-2" />
+          Home
         </Link>
       </div>
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,15 +115,15 @@ export default function CategoryPage() {
             {filteredQuestions.map((question) => (
               <motion.div
                 key={question.id}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full"
+                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full"
               >
                 <Link
                   to={`/question/${question.id}`}
                   className="flex flex-col gap-3 p-5 group"
                 >
                   <div className="flex items-center gap-3">
-                    <ChatBubbleLeftRightIcon className="w-4 h-4 flex-shrink-0 sm:w-5 sm:h-5 text-gray-400 dark:group-hover:text-[#ead3c8]" />
-                    <h2 className="text-sm sm:text-[17px] font-semibold leading-snug tracking-tight text-gray-900 dark:group-hover:text-[#ead3c8] dark:text-white">
+                    <ChatBubbleLeftRightIcon className="w-4 h-4 flex-shrink-0 sm:w-5 sm:h-5 text-gray-400 dark:group-hover:text-[#b89685]" />
+                    <h2 className="text-sm sm:text-[17px] font-semibold leading-snug tracking-tight text-gray-900 dark:group-hover:text-[#b89685]">
                       {highlightText(question.title, searchTerm)}
                     </h2>
                   </div>
