@@ -1,7 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleLeftRightIcon,
+  InboxIcon,
+} from "@heroicons/react/24/outline";
 import { Categories } from "../types";
 import { CSVQuestion } from "../types";
 import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
@@ -71,7 +74,9 @@ export default function CategoryPage() {
           </div>
         ) : (
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md px-6 py-16 text-center max-w-md w-full mx-auto">
-            <p className="text-3xl mb-3">📭</p>
+            <p className="flex flex-col items-center justify-center mb-3">
+              <InboxIcon className="w-10 h-10 text-gray-400 group-hover:text-[#B4A69F] mt-1" />
+            </p>
             <p className="text-base font-medium text-gray-800 dark:text-white mb-2">
               여기엔 아직 등록된 질문이 없어요
             </p>

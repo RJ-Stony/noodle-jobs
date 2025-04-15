@@ -6,6 +6,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import { CSVQuestion } from "../types";
 import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
 
@@ -82,12 +84,23 @@ export default function QuestionDetail() {
         </div>
 
         <div
-          className="prose max-w-none
-             prose-p:my-4 prose-li:my-2 prose-strong:text-[#43302b]
-             prose-p:text-gray-700
-             prose-ul:marker:text-[#B4A69F] prose-hr:border-[#D6C8C2]"
+          className="
+          prose max-w-none
+          prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg
+          prose-p:my-3 prose-li:my-1 prose-ul:pl-5
+          prose-headings:font-bold prose-headings:text-[#43302b]
+          prose-strong:text-[#9E8E88] prose-a:text-[#B4A69F]
+          prose-p:text-gray-700
+          prose-ul:marker:text-[#B4A69F]
+          prose-table:border prose-th:text-center prose-td:px-4 prose-td:py-2
+        "
         >
-          <ReactMarkdown>{question.answer}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+          >
+            {question.answer}
+          </ReactMarkdown>
         </div>
       </motion.div>
     </motion.div>
