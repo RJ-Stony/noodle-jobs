@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
+  ArrowLeftIcon,
   ChatBubbleLeftRightIcon,
   InboxIcon,
 } from "@heroicons/react/24/outline";
@@ -36,6 +37,14 @@ export default function CategoryPage() {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
     >
+      <div>
+        <Link
+          to="/"
+          className="inline-flex items-center text-[#B4A69F] hover:text-[#9E8E88] dark:text-[#D6C8C2] dark:hover:text-[#E8DCD6] transition-colors"
+        >
+          <ArrowLeftIcon className="h-5 w-5" />
+        </Link>
+      </div>
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">

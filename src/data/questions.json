@@ -24,6 +24,12 @@
       "description": "기본 자료구조와 알고리즘 문제 해결 전략들",
       "icon": "CodeBracketIcon"
     },
+    "language": {
+      "id": "Languages",
+      "name": "프로그래밍 언어",
+      "description": "세상엔 HTML만 있는 게 아니야, 언어의 세계에 빠져보자!",
+      "icon": "CommandLineIcon"
+    },
     "architecture": {
       "id": "Architecture",
       "name": "시스템 아키텍처",
@@ -48,12 +54,6 @@
       "description": "해커와의 두뇌 싸움, 그 끝은 내가 지킨다",
       "icon": "ShieldCheckIcon"
     },
-    "mobile": {
-      "id": "Mobile",
-      "name": "모바일",
-      "description": "앱 하나로 세상을 바꾸는 그 맛, 지금 내 손 안에 있어",
-      "icon": "DevicePhoneMobileIcon"
-    },
     "devops": {
       "id": "DevOps",
       "name": "데브옵스",
@@ -72,11 +72,11 @@
       "description": "트래픽 폭탄에도 끄떡없는, 좀 치밀한 설계 한 번 해보자",
       "icon": "RectangleStackIcon"
     },
-    "language": {
-      "id": "Languages",
-      "name": "프로그래밍 언어",
-      "description": "세상엔 HTML만 있는 게 아니야, 언어의 세계에 빠져보자!",
-      "icon": "CommandLineIcon"
+    "mobile": {
+      "id": "Mobile",
+      "name": "모바일",
+      "description": "앱 하나로 세상을 바꾸는 그 맛, 지금 내 손 안에 있어",
+      "icon": "DevicePhoneMobileIcon"
     }
   }
 }
