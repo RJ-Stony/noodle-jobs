@@ -27,11 +27,9 @@ export default function CategoryPage() {
   }, [name]);
 
   const categoryNames: { [key: string]: string } = {
-    "operating-system": "운영체제",
-    network: "네트워크",
-    database: "데이터베이스",
-    "data-structure": "자료구조와 알고리즘",
-    "system-architecture": "시스템 아키텍처",
+    OS: "Operating System",
+    DB: "Database",
+    ML: "Machine Learning",
   };
 
   return (
@@ -68,18 +66,6 @@ export default function CategoryPage() {
                     <h2 className="text-[17px] font-semibold leading-snug tracking-tight text-gray-900 group-hover:text-[#B4A69F]">
                       {question.title}
                     </h2>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs text-gray-400 dark:text-gray-500">
-                      {new Date(question.createdAt).toLocaleDateString(
-                        "ko-KR",
-                        {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        }
-                      )}
-                    </p>
                   </div>
                 </Link>
               </motion.div>

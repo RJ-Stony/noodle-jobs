@@ -7,6 +7,14 @@ import {
   CodeBracketIcon,
   CubeIcon,
   FireIcon,
+  ChartBarIcon,
+  CloudIcon,
+  ShieldCheckIcon,
+  DevicePhoneMobileIcon,
+  Cog6ToothIcon,
+  BeakerIcon,
+  RectangleStackIcon,
+  CommandLineIcon,
 } from "@heroicons/react/24/outline";
 import questionsData from "../data/questions.json";
 import { Category } from "../types";
@@ -20,6 +28,14 @@ const iconComponents: {
   CircleStackIcon,
   CodeBracketIcon,
   CubeIcon,
+  ChartBarIcon,
+  CloudIcon,
+  ShieldCheckIcon,
+  DevicePhoneMobileIcon,
+  Cog6ToothIcon,
+  BeakerIcon,
+  RectangleStackIcon,
+  CommandLineIcon,
 };
 
 export default function Home() {
