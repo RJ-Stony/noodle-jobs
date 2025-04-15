@@ -9,10 +9,14 @@ export type Question = {
   id: string;
   title: string;
   categoryId: string;
-  content: string;
   answer: string;
-  createdAt: string;
-  updatedAt: string;
+};
+
+export type CSVQuestion = {
+  id: string;
+  title: string;
+  categoryId: string;
+  answer: string;
 };
 
 export type Categories = {

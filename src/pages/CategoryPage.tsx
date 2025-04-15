@@ -1,36 +1,29 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import questionsData from "../data/questions.json";
-import { Question } from "../types";
 import { useState, useEffect } from "react";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
+import { Categories } from "../types";
+import { CSVQuestion } from "../types";
+import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
+import questionsData from "../data/questions.json"; // 카테고리용
 
 export default function CategoryPage() {
   const { name } = useParams<{ name: string }>();
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<CSVQuestion[]>([]);
 
   useEffect(() => {
-    const localQuestions = JSON.parse(
-      localStorage.getItem("questions") || "{}"
-    );
-    const defaultQuestions = questionsData.questions || {};
-    const allQuestions = { ...defaultQuestions, ...localQuestions };
-
-    const categoryQuestions = Object.values(allQuestions)
-      .filter((q: any) => q.categoryId === name)
-      .sort(
-        (a: any, b: any) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      ) as Question[];
-
-    setQuestions(categoryQuestions);
+    loadQuestionsFromCSV("/data/questions.csv").then((allQuestions) => {
+      const categoryQuestions = allQuestions
+        .filter((q) => q.categoryId.toLowerCase() === name?.toLowerCase())
+        .sort((a, b) => a.id.localeCompare(b.id));
+      setQuestions(categoryQuestions);
+    });
   }, [name]);
 
-  const categoryNames: { [key: string]: string } = {
-    OS: "Operating System",
-    DB: "Database",
-    ML: "Machine Learning",
-  };
+  const categories = questionsData.categories as Categories;
+  const category = categories[name as string];
+  const categoryTitle = category?.name || name;
+  const categoryDescription = category?.description;
 
   return (
     <motion.div
@@ -43,8 +36,13 @@ export default function CategoryPage() {
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            {categoryNames[name as string] || name}
+            {categoryTitle}
           </h1>
+          {categoryDescription && (
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+              {categoryDescription}
+            </p>
+          )}
           <p className="text-sm text-gray-600 dark:text-gray-400">
             지금까지 {questions.length}개의 질문들이 쌓여있어요
           </p>
