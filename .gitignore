@@ -29,6 +29,7 @@ ehthumbs.db
 
 # IDEs and editors
 .vscode/
+.cursor
 !.vscode/extensions.json
 .idea/
 *.suo
