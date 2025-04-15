@@ -1,4 +1,4 @@
-import { parse } from "csv-parse/browser/esm";
+﻿import { parse } from "csv-parse/browser/esm";
 import type { CSVQuestion } from "../types";
 
 export async function loadQuestionsFromCSV(

@@ -80,7 +80,9 @@ export default function QuestionDetail() {
       >
         <div className="flex items-start mb-6 gap-2">
           <ChatBubbleLeftRightIcon className="w-5 h-5 text-gray-400 group-hover:text-[#B4A69F] mt-1" />
-          <h1 className="text-xl font-bold text-gray-900">{question.title}</h1>
+          <h2 className="text-[17px] font-bold text-gray-900">
+            {question.title}
+          </h2>
         </div>
 
         <div
