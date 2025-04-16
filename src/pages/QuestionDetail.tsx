@@ -33,7 +33,7 @@ export default function QuestionDetail() {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#B4A69F]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
       </div>
     );
   }
@@ -46,7 +46,7 @@ export default function QuestionDetail() {
         </h1>
         <Link
           to="/"
-          className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100"
+          className="text-primary-400 hover:text-primary dark:text-primary-300 dark:hover:text-white"
         >
           홈으로 돌아가기
         </Link>
@@ -65,7 +65,7 @@ export default function QuestionDetail() {
       <div className="mb-2">
         <Link
           to={`/category/${question.categoryId}`}
-          className="inline-flex items-center text-[#B4A69F] hover:text-[#9E8E88] dark:text-[#D6C8C2] dark:hover:text-[#E8DCD6] transition-colors mb-4"
+          className="inline-flex items-center text-primary hover:text-primary-light dark:text-primary-200 dark:hover:text-white transition-colors mb-4"
         >
           <ArrowLeftIcon className="h-5 w-5 mr-2" />
           Category
@@ -73,29 +73,33 @@ export default function QuestionDetail() {
       </div>
 
       <motion.div
-        className="w-full max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-8"
+        className="w-full max-w-3xl mx-auto bg-white dark:bg-primary-500 rounded-lg shadow-lg p-6 mb-8"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="flex items-start mb-6 gap-2">
-          <ChatBubbleLeftRightIcon className="w-5 h-5 text-gray-400 group-hover:text-[#B4A69F] mt-1" />
-          <h2 className="text-[17px] font-bold text-gray-900">
+        <div className="flex items-center gap-3">
+          <ChatBubbleLeftRightIcon className="w-4 h-4 flex-shrink-0 sm:w-5 sm:h-5 text-primary dark:text-white" />
+          <h2 className="text-[17px] font-bold text-primary dark:text-white">
             {question.title}
           </h2>
         </div>
 
         <div
           className="
-          prose max-w-none
-          prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg
-          prose-p:my-3 prose-li:my-1 prose-ul:pl-5
-          prose-headings:font-bold prose-headings:text-[#43302b]
-          prose-strong:text-[#9E8E88] prose-a:text-[#B4A69F]
-          prose-p:text-gray-700
-          prose-ul:marker:text-[#B4A69F]
-          prose-table:border prose-th:text-center prose-td:px-4 prose-td:py-2
-        "
+            prose max-w-none 
+            prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg 
+            prose-p:my-3 prose-li:my-1 prose-ul:pl-5
+            prose-headings:font-bold prose-headings:text-primary 
+            prose-strong:text-primary-light 
+            prose-a:text-primary hover:prose-a:text-primary-light
+            prose-p:text-primary-600 dark:prose-p:text-white/80
+            prose-li:text-primary-600 dark:prose-li:text-white/80
+            prose-ul:marker:text-primary
+            prose-th:text-center
+            prose-td:px-4 prose-td:py-2
+            dark:prose-a:text-primary-200 dark:hover:prose-a:text-white
+          "
         >
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}

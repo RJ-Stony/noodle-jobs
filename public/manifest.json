@@ -1,0 +1,21 @@
+{
+  "name": "Noodle Jobs",
+  "short_name": "Noodle",
+  "description": "기술 면접, 라면보다 쉽게 끓여드릴게요",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a1e29",
+  "icons": [
+    {
+      "src": "/src/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/src/assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

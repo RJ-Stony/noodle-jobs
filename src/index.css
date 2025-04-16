@@ -2,35 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 기본 base 레이어 설정 */
 @layer base {
   body {
-    @apply font-sans;
-    @apply bg-beige-50 text-gray-900;
+    @apply font-sans bg-primary-50 text-primary-600 dark:bg-primary-dark dark:text-white;
   }
 }
 
+/* 공통 컴포넌트 스타일 */
 @layer components {
   .card {
-    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-200 border border-gray-100;
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-200 border border-primary-100;
   }
+
   .btn {
     @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
   }
+
   .btn-primary {
-    @apply bg-[#B4A69F] text-white hover:bg-[#9E8E88];
+    @apply bg-primary text-white hover:bg-primary-light dark:bg-primary dark:hover:bg-primary-500;
   }
+
   .input {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-beige-500 bg-black text-white;
+    @apply w-full px-4 py-2 border border-primary-200 rounded-md 
+           focus:outline-none focus:ring-2 focus:ring-primary-400 
+           bg-white text-primary-700 dark:bg-primary-700 dark:text-white;
+  }
+
+  .text-muted {
+    @apply text-primary-300 dark:text-primary-400;
+  }
+
+  .hover-card {
+    @apply hover:bg-primary-100 dark:hover:bg-primary-800;
   }
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-}
-
+/* 레이아웃 유틸리티 */
 .home-grid {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
@@ -40,93 +48,70 @@ body {
 }
 
 .category-icon {
-  @apply h-8 w-8 text-[#B4A69F] mb-4;
+  @apply h-8 w-8 text-primary mb-4;
 }
 
 .category-title {
-  @apply text-xl font-semibold text-gray-900;
+  @apply text-xl font-semibold text-primary;
 }
 
 .category-description {
-  @apply text-gray-600 text-sm;
+  @apply text-primary-400 text-sm;
 }
 
 .page-title {
-  @apply text-4xl font-bold text-gray-900 mb-4 text-center;
+  @apply text-4xl font-bold text-primary mb-4 text-center;
 }
 
 .page-subtitle {
-  @apply text-xl text-gray-600 text-center mb-12;
+  @apply text-xl text-primary-400 text-center mb-12;
 }
 
 .question-form {
-  @apply max-w-2xl mx-auto space-y-6 bg-black p-8 rounded-lg;
+  @apply max-w-2xl mx-auto space-y-6 bg-white dark:bg-primary-800 p-8 rounded-lg;
 }
 
 .form-label {
-  @apply block text-sm font-medium text-white mb-1;
+  @apply block text-sm font-medium text-primary mb-1;
 }
 
 .back-link {
-  @apply text-[#B4A69F] hover:text-[#9E8E88] inline-flex items-center mb-6;
+  @apply text-primary hover:text-primary-light inline-flex items-center mb-6;
 }
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* 링크 스타일 */
 a {
-  font-weight: 500;
-  color: #bfa094;
-  text-decoration: inherit;
+  @apply text-primary font-medium underline-offset-2;
 }
 a:hover {
-  color: #bfa094;
+  @apply text-primary-light;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* 버튼 일반 스타일 */
 button {
-  @apply rounded-md border border-transparent px-4 py-2 text-base font-medium transition-all;
-  background-color: #bfa094; /* 기본 베이지 */
-  color: white;
+  @apply rounded-md border border-transparent px-4 py-2 text-base font-medium transition-all bg-primary text-white;
 }
-
 button:hover {
-  background-color: #977669; /* hover 베이지 톤 */
-  border-color: #bfa094; /* hover 테두리도 동일하게 */
+  @apply bg-primary-light border-primary;
 }
-
 button:focus,
 button:focus-visible {
   outline: none;
-  border-color: #bfa094; /* 강조 선명하게 */
+  @apply border-primary;
   box-shadow: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* 애니메이션 */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  a:hover {
-    color: #bfa094;
+  to {
+    transform: rotate(360deg);
   }
-  button {
-    background-color: #f9f9f9;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .logo.spin {
+    animation: logo-spin infinite 20s linear;
   }
 }
