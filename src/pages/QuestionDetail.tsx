@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeftIcon,
@@ -6,29 +6,25 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import remarkToc from "remark-toc";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { CSVQuestion } from "../types";
-import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
+import { useQuestions } from "../contexts/QuestionContext";
 
 export default function QuestionDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const { questions, loading } = useQuestions();
   const [question, setQuestion] = useState<CSVQuestion | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadQuestionsFromCSV("/data/questions.csv").then((allQuestions) => {
-      const found = allQuestions.find((q) => q.id === id);
-      if (!found) {
-        navigate("/");
-        return;
-      }
-
-      setQuestion(found);
-      setLoading(false);
-    });
-  }, [id, navigate]);
+    if (!loading && id) {
+      const found = questions.find((q) => q.id === id);
+      setQuestion(found || null);
+    }
+  }, [id, loading, questions]);
 
   if (loading) {
     return (
@@ -40,17 +36,28 @@ export default function QuestionDetail() {
 
   if (!question) {
     return (
-      <div className="text-center py-12">
-        <h1 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">
-          질문을 찾을 수 없습니다.
-        </h1>
-        <Link
-          to="/"
-          className="text-primary-400 hover:text-primary dark:text-primary-300 dark:hover:text-white"
-        >
-          홈으로 돌아가기
-        </Link>
-      </div>
+      <motion.div
+        className="fixed inset-0 flex items-center justify-center px-4 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            존재하지 않는 질문이에요
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            주소를 다시 확인하시거나 아래 버튼을 눌러 홈으로 함께 가요 !
+          </p>
+          <Link
+            to="/"
+            className="inline-block bg-primary-100 dark:bg-primary text-primary hover:text-primary-light dark:text-primary-200 dark:hover:text-white transition-colors font-medium px-5 py-2 rounded-lg hover:opacity-90"
+          >
+            홈으로 돌아가기
+          </Link>
+        </div>
+      </motion.div>
     );
   }
 
@@ -87,23 +94,48 @@ export default function QuestionDetail() {
 
         <div
           className="
-            prose max-w-none 
-            prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg 
-            prose-p:my-3 prose-li:my-1 prose-ul:pl-5
-            prose-headings:font-bold prose-headings:text-primary 
-            prose-strong:text-primary-light 
-            prose-a:text-primary hover:prose-a:text-primary-light
-            prose-p:text-primary-600 dark:prose-p:text-white/80
-            prose-li:text-primary-600 dark:prose-li:text-white/80
-            prose-ul:marker:text-primary
-            prose-th:text-center
-            prose-td:px-4 prose-td:py-2
-            dark:prose-a:text-primary-200 dark:hover:prose-a:text-white
-          "
+    prose max-w-none
+    prose-headings:font-bold prose-headings:text-primary 
+    prose-h1:mb-4 prose-h2:mb-3 prose-h3:mb-2
+    prose-p:my-4 prose-li:my-2 prose-ul:pl-5 prose-ol:pl-5
+    prose-strong:text-primary
+    prose-code:bg-primary-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+    dark:prose-code:bg-primary-600/30
+    prose-pre:bg-gray-900 prose-pre:text-white prose-pre:rounded-md prose-pre:overflow-x-auto
+    dark:prose-pre:bg-primary-600
+    prose-blockquote:italic prose-blockquote:text-primary prose-blockquote:border-l-4 prose-blockquote:pl-4
+    dark:prose-blockquote:text-white/70
+    dark:prose-p:text-white/90 dark:prose-li:text-white/90 dark:prose-headings:text-white
+  "
         >
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkToc]}
             rehypePlugins={[rehypeRaw]}
+            components={{
+              code({ node, inline, className = "", children, ...props }: any) {
+                const match = /language-(\w+)/.exec(className || "");
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    language={match[1]}
+                    style={oneDark as any}
+                    PreTag="div"
+                    customStyle={{
+                      backgroundColor: "#1e1e1e",
+                      padding: "1rem",
+                      borderRadius: "0.5rem",
+                      fontSize: "0.875rem",
+                      overflowX: "auto",
+                    }}
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
           >
             {question.answer}
           </ReactMarkdown>

@@ -6,6 +6,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { QuestionProvider } from "./contexts/QuestionContext";
 import { AnimatePresence } from "framer-motion";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -38,9 +39,11 @@ function AnimatedRoutes() {
 function App() {
   return (
     <ThemeProvider>
-      <Router basename="/noodle-jobs">
-        <AnimatedRoutes />
-      </Router>
+      <QuestionProvider>
+        <Router basename="/noodle-jobs">
+          <AnimatedRoutes />
+        </Router>
+      </QuestionProvider>
     </ThemeProvider>
   );
 }

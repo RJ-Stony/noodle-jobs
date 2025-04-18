@@ -8,26 +8,29 @@ import {
 } from "@heroicons/react/24/outline";
 import { Categories } from "../types";
 import { CSVQuestion } from "../types";
-import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
 import questionsData from "../data/questions.json";
 import SortDropdown from "../components/SortDropdown";
+import { useQuestions } from "../contexts/QuestionContext";
 
 export default function CategoryPage() {
   const { name } = useParams<{ name: string }>();
-  const [questions, setQuestions] = useState<CSVQuestion[]>([]);
+  const { questions } = useQuestions();
+
+  const [filteredQuestions, setFilteredQuestions] = useState<CSVQuestion[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortType, setSortType] = useState<"title" | "recent">("recent");
 
   useEffect(() => {
-    loadQuestionsFromCSV("/data/questions.csv").then((allQuestions) => {
-      const categoryQuestions = allQuestions
-        .filter((q) => q.categoryId.toLowerCase() === name?.toLowerCase())
-        .sort((a, b) => a.id.localeCompare(b.id));
-      setQuestions(categoryQuestions);
-    });
-  }, [name]);
+    if (!name) return;
 
-  const filteredQuestions = questions
+    const categoryQuestions = questions
+      .filter((q) => q.categoryId.toLowerCase() === name.toLowerCase())
+      .sort((a, b) => a.id.localeCompare(b.id));
+
+    setFilteredQuestions(categoryQuestions);
+  }, [name, questions]);
+
+  const searchedQuestions = filteredQuestions
     .filter((q) => {
       const term = searchTerm.toLowerCase();
       return (
@@ -96,12 +99,12 @@ export default function CategoryPage() {
           )}
           {searchTerm ? (
             <p className="text-sm text-primary-500 dark:text-white/70">
-              {questions.length}개 중에 {filteredQuestions.length}개가
+              {filteredQuestions.length}개 중에 {searchedQuestions.length}개가
               검색되었어요
             </p>
           ) : (
             <p className="text-sm text-primary-500 dark:text-white/70">
-              지금까지 {questions.length}개의 질문들이 쌓여있어요
+              지금까지 {filteredQuestions.length}개의 질문들이 쌓여있어요
             </p>
           )}
 
@@ -126,9 +129,9 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        {filteredQuestions.length > 0 ? (
+        {searchedQuestions.length > 0 ? (
           <div className="w-full max-w-3xl mx-auto space-y-6">
-            {filteredQuestions.map((question) => (
+            {searchedQuestions.map((question) => (
               <motion.div
                 key={question.id}
                 className="bg-white dark:bg-primary-500 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full"

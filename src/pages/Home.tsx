@@ -1,4 +1,4 @@
-import { useEffect, useState, SVGProps } from "react";
+import { SVGProps } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -18,8 +18,8 @@ import {
   CommandLineIcon,
 } from "@heroicons/react/24/outline";
 import questionsData from "../data/questions.json";
-import { CSVQuestion, Category } from "../types";
-import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
+import { Category } from "../types";
+import { useQuestions } from "../contexts/QuestionContext";
 
 const iconComponents: {
   [key: string]: React.ComponentType<SVGProps<SVGSVGElement>>;
@@ -40,16 +40,9 @@ const iconComponents: {
 };
 
 export default function Home() {
-  const [questions, setQuestions] = useState<CSVQuestion[]>([]);
-  const [questionCount, setQuestionCount] = useState<number>(0);
+  const { questions } = useQuestions();
+  const questionCount = questions.length;
   const categories = questionsData.categories as { [key: string]: Category };
-
-  useEffect(() => {
-    loadQuestionsFromCSV("/data/questions.csv").then((qs) => {
-      setQuestions(qs);
-      setQuestionCount(qs.length);
-    });
-  }, []);
 
   return (
     <motion.div
