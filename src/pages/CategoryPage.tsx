@@ -6,6 +6,7 @@ import {
   ChatBubbleLeftRightIcon,
   InboxIcon,
 } from "@heroicons/react/24/outline";
+import { useInView } from "react-intersection-observer";
 import { Categories } from "../types";
 import { CSVQuestion } from "../types";
 import questionsData from "../data/questions.json";
@@ -15,10 +16,11 @@ import { useQuestions } from "../contexts/QuestionContext";
 export default function CategoryPage() {
   const { name } = useParams<{ name: string }>();
   const { questions } = useQuestions();
-
   const [filteredQuestions, setFilteredQuestions] = useState<CSVQuestion[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortType, setSortType] = useState<"title" | "recent">("recent");
+  const [visibleCount, setVisibleCount] = useState(10);
+  const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {
     if (!name) return;
@@ -28,6 +30,7 @@ export default function CategoryPage() {
       .sort((a, b) => a.id.localeCompare(b.id));
 
     setFilteredQuestions(categoryQuestions);
+    setVisibleCount(10);
   }, [name, questions]);
 
   const searchedQuestions = filteredQuestions
@@ -43,6 +46,14 @@ export default function CategoryPage() {
         ? a.title.localeCompare(b.title)
         : b.id.localeCompare(a.id);
     });
+
+  const visibleQuestions = searchedQuestions.slice(0, visibleCount);
+
+  useEffect(() => {
+    if (inView && visibleCount < searchedQuestions.length) {
+      setVisibleCount((prev) => prev + 10);
+    }
+  }, [inView]);
 
   function highlightText(text: string, keyword: string) {
     if (!keyword) return text;
@@ -129,9 +140,9 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        {searchedQuestions.length > 0 ? (
+        {visibleQuestions.length > 0 ? (
           <div className="w-full max-w-3xl mx-auto space-y-6">
-            {searchedQuestions.map((question) => (
+            {visibleQuestions.map((question) => (
               <motion.div
                 key={question.id}
                 className="bg-white dark:bg-primary-500 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full"
@@ -149,6 +160,14 @@ export default function CategoryPage() {
                 </Link>
               </motion.div>
             ))}
+            {visibleCount < searchedQuestions.length && (
+              <div
+                ref={ref}
+                className="h-10 w-full flex justify-center items-center text-sm text-primary-400"
+              >
+                질문을 더 찾아보고 있어요...
+              </div>
+            )}
           </div>
         ) : (
           <div className="bg-white dark:bg-primary-800 rounded-xl shadow-md px-16 py-16 text-center max-w-md w-full mx-auto">
