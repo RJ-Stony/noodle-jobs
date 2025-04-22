@@ -20,13 +20,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             <button
               onClick={toggleTheme}
-              className="group relative p-2 rounded-md border border-transparent 
-              hover:border-primary dark:hover:border-primary-300
-              bg-gradient-to-r from-primary to-primary-light dark:bg-primary 
-              text-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+              className="group relative p-2 rounded-md overflow-hidden
+             bg-gradient-to-r from-primary to-primary-light dark:from-primary dark:to-primary-light
+             text-white shadow-md hover:shadow-lg transition-all duration-300
+             border border-transparents hover:border-primary/50 dark:hover:border-primary-300/60"
             >
-              <span className="absolute inset-0 bg-white dark:bg-primary-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-              <span className="relative group-hover:text-primary dark:group-hover:text-primary-200 transition-colors duration-300">
+              {/* Hover 배경 효과 */}
+              <span
+                className="absolute inset-0 bg-white/10 dark:bg-white/10
+               transform scale-x-0 origin-left group-hover:scale-x-100
+               transition-transform duration-300 ease-out pointer-events-none"
+              />
+              {/* 아이콘 */}
+              <span className="relative z-10 group-hover:text-white dark:group-hover:text-primary-100 transition-colors duration-300">
                 {theme === "dark" ? (
                   <SunIcon className="w-5 h-5" />
                 ) : (
