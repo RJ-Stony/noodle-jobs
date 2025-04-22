@@ -20,8 +20,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             <button
               onClick={toggleTheme}
-              className="group relative p-2 rounded-md overflow-hidden
-             bg-gradient-to-r from-primary to-primary-light dark:from-primary dark:to-primary-light
+              className="group relative p-2 rounded-md overflow-auto
+             bg-gradient-to-r from-primary to-primary-light dark:from-primary-light dark:to-primary-light
              text-white shadow-md hover:shadow-lg transition-all duration-300
              border border-transparents hover:border-primary/50 dark:hover:border-primary-300/60"
             >
