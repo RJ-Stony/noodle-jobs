@@ -174,7 +174,13 @@ export default function CategoryPage() {
             {visibleQuestions.map((question) => (
               <motion.div
                 key={question.id}
-                className="bg-white dark:bg-primary-500 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full"
+                layout
+                layoutId={question.id}
+                initial={{ opacity: 0.8, y: 12, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -12, scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 40 }}
+                className="bg-white dark:bg-primary-500 rounded-xl shadow-md hover:shadow-lg w-full"
               >
                 <Link
                   to={`/question/${question.id}`}
