@@ -191,7 +191,7 @@ export default function CategoryPage() {
                       type="checkbox"
                       checked={checkedIds.includes(question.id)}
                       onChange={() => toggleChecked(question.id)}
-                      className="w-3 h-3 flex-shrink-0 sm:w-4 sm:h-4 accent-primary-400 dark:accent-primary-600 transition-all duration-100 ease-in-out scale-100 hover:scale-110 cursor-pointer"
+                      className="w-3.5 h-3.5 flex-shrink-0 sm:w-4 sm:h-4 accent-primary-400 dark:accent-primary-600 transition-all duration-100 ease-in-out scale-100 hover:scale-110 cursor-pointer"
                       onClick={(e) => e.stopPropagation()}
                       onKeyDown={(e) => e.stopPropagation()}
                     />
