@@ -148,7 +148,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     prose-headings:font-bold prose-headings:text-primary 
     prose-h1:mb-4 prose-h2:mb-3 prose-h3:mb-2
     prose-p:my-4 prose-li:my-2 prose-ul:pl-5 prose-ol:pl-5
-    prose-strong:text-primary dark:prose-strong:text-gray-900
+    prose-strong:text-primary dark:prose-strong:text-indigo-300
     prose-code:bg-primary-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
     dark:prose-code:bg-primary-600/30
     prose-pre:bg-gray-900 prose-pre:text-white prose-pre:rounded-md prose-pre:overflow-x-auto
