@@ -23,7 +23,7 @@ export const QuestionProvider = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadQuestionsFromCSV().then((qs) => {
+    loadQuestionsFromCSV("/data/questions.csv").then((qs) => {
       setQuestions(qs);
       setLoading(false);
     });
