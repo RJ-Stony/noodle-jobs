@@ -11,11 +11,12 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 const sortOptions = [
   { name: "최신순", value: "recent" },
   { name: "가나다순", value: "title" },
+  { name: "체크한 질문", value: "checked" },
 ];
 
 type SortDropdownProps = {
-  sortType: "title" | "recent";
-  setSortType: (value: "title" | "recent") => void;
+  sortType: "title" | "recent" | "checked";
+  setSortType: (value: "title" | "recent" | "checked") => void;
 };
 
 export default function SortDropdown({
@@ -26,10 +27,10 @@ export default function SortDropdown({
     sortOptions.find((opt) => opt.value === sortType) || sortOptions[0];
 
   return (
-    <div className="w-28 text-sm">
+    <div className="w-40 text-sm">
       <Listbox
         value={selected}
-        onChange={(e) => setSortType(e.value as "title" | "recent")}
+        onChange={(e) => setSortType(e.value as "title" | "recent" | "checked")}
       >
         <div className="relative">
           <ListboxButton

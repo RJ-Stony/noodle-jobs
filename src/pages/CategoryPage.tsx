@@ -13,14 +13,37 @@ import questionsData from "../data/questions.json";
 import SortDropdown from "../components/SortDropdown";
 import { useQuestions } from "../contexts/QuestionContext";
 
+const LOCAL_KEY = "checkedQuestions";
+
 export default function CategoryPage() {
   const { name } = useParams<{ name: string }>();
   const { questions } = useQuestions();
   const [filteredQuestions, setFilteredQuestions] = useState<CSVQuestion[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortType, setSortType] = useState<"title" | "recent">("recent");
+  const [sortType, setSortType] = useState<"title" | "recent" | "checked">(
+    "recent"
+  );
   const [visibleCount, setVisibleCount] = useState(10);
   const { ref, inView } = useInView({ threshold: 0.5 });
+
+  const [checkedIds, setCheckedIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(LOCAL_KEY);
+    if (saved) {
+      setCheckedIds(JSON.parse(saved));
+    }
+  }, []);
+
+  const toggleChecked = (id: string) => {
+    setCheckedIds((prev) => {
+      const updated = prev.includes(id)
+        ? prev.filter((q) => q !== id)
+        : [...prev, id];
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   useEffect(() => {
     if (!name) return;
@@ -33,27 +56,33 @@ export default function CategoryPage() {
     setVisibleCount(10);
   }, [name, questions]);
 
-  const searchedQuestions = filteredQuestions
-    .filter((q) => {
-      const term = searchTerm.toLowerCase();
-      return (
-        q.title.toLowerCase().includes(term) ||
-        q.answer.toLowerCase().includes(term)
-      );
-    })
-    .sort((a, b) => {
-      return sortType === "title"
-        ? a.title.localeCompare(b.title)
-        : b.id.localeCompare(a.id);
-    });
+  const searchedQuestions = filteredQuestions.filter((q) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      q.title.toLowerCase().includes(term) ||
+      q.answer.toLowerCase().includes(term)
+    );
+  });
 
-  const visibleQuestions = searchedQuestions.slice(0, visibleCount);
+  const sortedQuestions = (() => {
+    if (sortType === "checked") {
+      return searchedQuestions.filter((q) => checkedIds.includes(q.id));
+    } else if (sortType === "title") {
+      return [...searchedQuestions].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+    } else {
+      return [...searchedQuestions].sort((a, b) => b.id.localeCompare(a.id));
+    }
+  })();
+
+  const visibleQuestions = sortedQuestions.slice(0, visibleCount);
 
   useEffect(() => {
-    if (inView && visibleCount < searchedQuestions.length) {
+    if (inView && visibleCount < sortedQuestions.length) {
       setVisibleCount((prev) => prev + 10);
     }
-  }, [inView]);
+  }, [inView, sortedQuestions.length]);
 
   function highlightText(text: string, keyword: string) {
     if (!keyword) return text;
@@ -110,7 +139,7 @@ export default function CategoryPage() {
           )}
           {searchTerm ? (
             <p className="text-sm text-primary-500 dark:text-white/70">
-              {filteredQuestions.length}개 중에 {searchedQuestions.length}개가
+              {filteredQuestions.length}개 중에 {sortedQuestions.length}개가
               검색되었어요
             </p>
           ) : (
@@ -152,6 +181,14 @@ export default function CategoryPage() {
                   className="flex flex-col gap-3 p-5 group"
                 >
                   <div className="flex items-center gap-3">
+                    <input
+                      type="checkbox"
+                      checked={checkedIds.includes(question.id)}
+                      onChange={() => toggleChecked(question.id)}
+                      className="w-3 h-3 flex-shrink-0 sm:w-4 sm:h-4 accent-primary-400 dark:accent-primary-600 transition-all duration-100 ease-in-out scale-100 hover:scale-110 cursor-pointer"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                    />
                     <ChatBubbleLeftRightIcon className="w-4 h-4 flex-shrink-0 sm:w-5 sm:h-5 text-primary-500 dark:text-white group-hover:text-primary dark:group-hover:text-primary-200" />
                     <h2 className="text-sm sm:text-[17px] font-semibold leading-snug tracking-tight text-primary-500 dark:text-white group-hover:text-primary dark:group-hover:text-primary-200">
                       {highlightText(question.title, searchTerm)}
@@ -160,12 +197,12 @@ export default function CategoryPage() {
                 </Link>
               </motion.div>
             ))}
-            {visibleCount < searchedQuestions.length && (
+            {visibleCount < sortedQuestions.length && (
               <div
                 ref={ref}
                 className="h-10 w-full flex justify-center items-center text-sm text-primary-400"
               >
-                질문을 더 찾아보고 있어요...
+                질문을 더 찾고 있어요...
               </div>
             )}
           </div>
