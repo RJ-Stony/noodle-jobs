@@ -2,7 +2,9 @@
 import type { CSVQuestion } from "../types";
 
 export async function loadQuestionsFromCSV(): Promise<CSVQuestion[]> {
-  const res = await fetch("/data/questions.csv"); // ✅ 절대경로 직접 지정
+  const path = `${import.meta.env.BASE_URL}data/questions.csv`;
+
+  const res = await fetch(path);
 
   if (!res.ok) {
     console.error("❌ CSV fetch 실패", res.status);
