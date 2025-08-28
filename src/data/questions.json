@@ -1,5 +1,23 @@
 {
   "categories": {
+    "language": {
+      "id": "Languages",
+      "name": "프로그래밍 언어",
+      "description": "세상엔 HTML만 있는 게 아니야, 언어의 세계에 빠져보자!",
+      "icon": "CommandLineIcon"
+    },
+    "algorithm": {
+      "id": "Algorithm",
+      "name": "자료구조와 알고리즘",
+      "description": "기본 자료구조와 알고리즘 문제 해결 전략들",
+      "icon": "CodeBracketIcon"
+    },
+    "machinelearning": {
+      "id": "Machine Learning",
+      "name": "ML과 AI",
+      "description": "데이터 먹고 예측 뱉는 마법, 이제 우리도 해보자",
+      "icon": "ChartBarIcon"
+    },
     "os": {
       "id": "OS",
       "name": "운영체제",
@@ -18,29 +36,11 @@
       "description": "SQL로 면접관 마음도 조인해버리기",
       "icon": "CircleStackIcon"
     },
-    "algorithm": {
-      "id": "Algorithm",
-      "name": "자료구조와 알고리즘",
-      "description": "기본 자료구조와 알고리즘 문제 해결 전략들",
-      "icon": "CodeBracketIcon"
-    },
-    "language": {
-      "id": "Languages",
-      "name": "프로그래밍 언어",
-      "description": "세상엔 HTML만 있는 게 아니야, 언어의 세계에 빠져보자!",
-      "icon": "CommandLineIcon"
-    },
     "architecture": {
       "id": "Architecture",
       "name": "시스템 아키텍처",
-      "description": "MSA? 디자인 패턴? 이제는 면접에서 말할 차례",
+      "description": "MSA? 디자인 패턴? 이제는 면접에서 제대로 말하자",
       "icon": "CubeIcon"
-    },
-    "machinelearning": {
-      "id": "Machine Learning",
-      "name": "머신러닝",
-      "description": "데이터 먹고 예측 뱉는 AI 마법, 이제 우리도 해보자",
-      "icon": "ChartBarIcon"
     },
     "cloud": {
       "id": "Cloud",
@@ -57,19 +57,19 @@
     "devops": {
       "id": "DevOps",
       "name": "데브옵스",
-      "description": "코드 짜고 배포하고 모니터링까지 One-Stop으로",
+      "description": "코드 짜고 배포하고 모니터링까지 Non-Stop으로",
       "icon": "Cog6ToothIcon"
     },
     "testing": {
       "id": "Testing",
       "name": "테스트",
-      "description": "버그를 부수는 쾌감, 디버깅은 우리의 문화입니다",
+      "description": "버그 뚝배기 깨는 쾌감, 디버깅은 우리의 문화입니다",
       "icon": "BeakerIcon"
     },
     "mobile": {
       "id": "Mobile",
       "name": "모바일",
-      "description": "앱 하나로 세상을 바꾸는 그 맛, 지금 내 손 안에 있어",
+      "description": "앱 하나로 세상을 바꾸는 그 감각, 지금 내 손 안에 있어",
       "icon": "DevicePhoneMobileIcon"
     }
   }
