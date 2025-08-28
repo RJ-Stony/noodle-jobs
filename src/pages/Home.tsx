@@ -17,7 +17,7 @@ import {
   RectangleStackIcon,
   CommandLineIcon,
 } from "@heroicons/react/24/outline";
-import questionsData from "../data/questions.json";
+import categoriesData from "../data/categories.json";
 import { Category } from "../types";
 import { useQuestions } from "../contexts/QuestionContext";
 
@@ -42,7 +42,7 @@ const iconComponents: {
 export default function Home() {
   const { questions } = useQuestions();
   const questionCount = questions.length;
-  const categories = questionsData.categories as { [key: string]: Category };
+  const categories = categoriesData.categories as { [key: string]: Category };
 
   return (
     <motion.div

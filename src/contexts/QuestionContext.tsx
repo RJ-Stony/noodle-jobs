@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { CSVQuestion } from "../types";
-import { loadQuestionsFromCSV } from "../utils/loadQuestionsFromCSV";
+import questionsData from "../data/questionsData.json";
 
 interface QuestionContextType {
   questions: CSVQuestion[];
@@ -23,10 +23,9 @@ export const QuestionProvider = ({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadQuestionsFromCSV("/data/questions.csv").then((qs) => {
-      setQuestions(qs);
-      setLoading(false);
-    });
+    // JSON 데이터를 직접 사용 (빌드 타임에 이미 처리됨)
+    setQuestions(questionsData as CSVQuestion[]);
+    setLoading(false);
   }, []);
 
   return (

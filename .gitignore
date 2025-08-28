@@ -52,3 +52,7 @@ coverage/
 # GitHub Pages artifacts (only if you're deploying with gh-pages)
 # If you're pushing dist to gh-pages branch, it's fine to keep it ignored here
 gh-pages/
+
+# CLAUDE
+CLAUDE.md
+HOW_TO_ADD_ANSWERS.md

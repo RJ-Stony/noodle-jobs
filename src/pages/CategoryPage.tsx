@@ -9,7 +9,7 @@ import {
 import { useInView } from "react-intersection-observer";
 import { Categories } from "../types";
 import { CSVQuestion } from "../types";
-import questionsData from "../data/questions.json";
+import categoriesData from "../data/categories.json";
 import SortDropdown from "../components/SortDropdown";
 import { useQuestions } from "../contexts/QuestionContext";
 
@@ -104,7 +104,7 @@ export default function CategoryPage() {
     );
   }
 
-  const categories = questionsData.categories as Categories;
+  const categories = categoriesData.categories as Categories;
   const category = categories[name as string];
   const categoryTitle = category?.name || name;
   const categoryDescription = category?.description;
