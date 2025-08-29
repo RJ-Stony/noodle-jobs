@@ -58,22 +58,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </p>
             <div className="flex space-x-6">
               <Link
+                to="https://github.com/RJ-Stony/noodle-jobs"
+                className="text-sm text-primary-400 hover:text-primary dark:text-primary-300 dark:hover:text-primary-100 transition-colors"
+              >
+                GitHub
+              </Link>
+              <Link
                 to="https://injoycode.tistory.com/"
                 className="text-sm text-primary-400 hover:text-primary dark:text-primary-300 dark:hover:text-primary-100 transition-colors"
               >
                 Blog
-              </Link>
-              <Link
-                to="/"
-                className="text-sm text-primary-400 hover:text-primary dark:text-primary-300 dark:hover:text-primary-100 transition-colors"
-              >
-                Privacy
-              </Link>
-              <Link
-                to="/"
-                className="text-sm text-primary-400 hover:text-primary dark:text-primary-300 dark:hover:text-primary-100 transition-colors"
-              >
-                Terms
               </Link>
             </div>
           </div>
